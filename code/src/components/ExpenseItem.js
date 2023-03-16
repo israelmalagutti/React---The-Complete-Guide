@@ -1,15 +1,15 @@
 import "./ExpenseItem.css";
 
-const ExpenseItem = ({ date, expenseType, price }) => {
-  const expenseDate = new Date();
+const ExpenseItem = ({ expenseDate, expenseTitle, expensePrice }) => {
+  const date = new Date().toISOString();
 
   return (
     <div className="expense-item">
-      <div>{date || expenseDate.toISOString()}</div>
+      <div>{expenseDate.toISOString() || date}</div>
 
       <div className="expense-item__description">
-        <h2>{expenseType || "Car Insurance"}</h2>
-        <div className="expense-item__price">${price || 297.67}</div>
+        <h2>{expenseTitle || "Car Insurance"}</h2>
+        <div className="expense-item__price">${expensePrice || 297.67}</div>
       </div>
     </div>
   );
