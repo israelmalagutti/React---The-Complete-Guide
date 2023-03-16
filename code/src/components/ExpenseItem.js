@@ -1,11 +1,18 @@
 import "./ExpenseItem.css";
 
 const ExpenseItem = ({ expenseDate, expenseTitle, expensePrice }) => {
-  const date = new Date().toISOString();
+  const day = expenseDate.toLocaleString("en-US", {
+    month: "long",
+    day: "2-digit",
+  });
+  const year = expenseDate.getFullYear();
 
   return (
     <div className="expense-item">
-      <div>{expenseDate.toISOString() || date}</div>
+      <div>
+        <div>{year}</div>
+        <div>{day}</div>
+      </div>
 
       <div className="expense-item__description">
         <h2>{expenseTitle || "Car Insurance"}</h2>
