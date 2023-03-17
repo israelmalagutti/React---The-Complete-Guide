@@ -1,22 +1,15 @@
 import "./ExpenseItem.css";
 
-const ExpenseItem = ({ expenseDate, expenseTitle, expensePrice }) => {
-  const day = expenseDate.toLocaleString("en-US", {
-    month: "long",
-    day: "2-digit",
-  });
-  const year = expenseDate.getFullYear();
+import { ExpenseDate } from "./ExpenseDate";
 
+const ExpenseItem = ({ date, title, price }) => {
   return (
     <div className="expense-item">
-      <div>
-        <div>{year}</div>
-        <div>{day}</div>
-      </div>
+      <ExpenseDate date={date} />
 
       <div className="expense-item__description">
-        <h2>{expenseTitle || "Car Insurance"}</h2>
-        <div className="expense-item__price">${expensePrice || 297.67}</div>
+        <h2>{title || "Car Insurance"}</h2>
+        <div className="expense-item__price">${price || 297.67}</div>
       </div>
     </div>
   );
