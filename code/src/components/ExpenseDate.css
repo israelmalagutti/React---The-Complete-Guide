@@ -1,16 +1,13 @@
 .expense-date {
-  color: rgb(300, 300, 300);
-
-  /* border-color: rgb(200, 200, 200); */
-  /* border-width: 2px; */
-  border-radius: 8px;
+  color: #ffffff;
 }
 
 .expense-date.container {
-  background-color: rgb(31, 31, 31);
-  color: rgb(300, 300, 300);
+  background-color: #2a2a2a;
+  color: #ffffff;
 
-  min-width: 132px;
+  width: 5.5rem;
+  height: 5.5rem;
 
   display: flex;
   flex-direction: column;
@@ -20,28 +17,23 @@
 
   text-align: center;
 
-  padding: 12px 24px;
-
-  border-color: #fff;
-  border-width: 2px;
-  border-radius: 8px;
+  border: 1px solid #ececec;
+  border-radius: 12px;
 }
 
 .expense-date.day {
   margin: 12px 0 0;
 
-  font-size: 32px;
-  font-weight: 600;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 .expense-date.month {
-  font-size: 18px;
-  font-weight: 600;
+  font-size: 0.75rem;
+  font-weight: bold;
 }
 
 .expense-date.year {
-  margin: 4px 0 0;
-
   color: rgb(170, 170, 170);
-  font-size: 18px;
+  font-size: 0.75rem;
 }
