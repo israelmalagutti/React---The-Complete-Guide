@@ -2,7 +2,7 @@ import "./Expenses.css";
 
 import { ExpenseItem } from "./ExpenseItem";
 
-export const Expenses = ({ expenses }) => {
+const Expenses = ({ expenses }) => {
   return (
     <div className="expenses">
       {expenses.map((expense, id) => (
@@ -16,3 +16,5 @@ export const Expenses = ({ expenses }) => {
     </div>
   );
 };
+
+export { Expenses };

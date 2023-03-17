@@ -1,6 +1,6 @@
 import { Expenses } from "./components/Expenses";
 
-function App() {
+const App = () => {
   const expenses = [
     { title: "Car Insurance", amount: 294.67, date: new Date(2023, 3, 9) },
     { title: "Grocery shopping", amount: 300, date: new Date(2023, 2, 7) },
@@ -14,6 +14,6 @@ function App() {
       <Expenses expenses={expenses} />
     </div>
   );
-}
+};
 
 export default App;

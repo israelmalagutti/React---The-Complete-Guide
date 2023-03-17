@@ -1,6 +1,6 @@
 import "./ExpenseDate.css";
 
-export const ExpenseDate = ({ date }) => {
+const ExpenseDate = ({ date }) => {
   const day = date.toLocaleString("en-US", {
     day: "2-digit",
   });
@@ -19,3 +19,5 @@ export const ExpenseDate = ({ date }) => {
     </div>
   );
 };
+
+export { ExpenseDate };
