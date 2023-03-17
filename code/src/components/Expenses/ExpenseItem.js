@@ -1,6 +1,6 @@
 import "./ExpenseItem.css";
 
-import { Card } from "./Card";
+import { Card } from "../Ui";
 import { ExpenseDate } from "./ExpenseDate";
 
 const ExpenseItem = ({ date, title, price }) => {
