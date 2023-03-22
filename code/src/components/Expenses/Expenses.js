@@ -13,9 +13,14 @@ const Expenses = ({ expenses }) => {
     setFilteredYear(selectedYear);
 
     // Debbug
-    console.log(selectedYear);
-    console.log(filteredYear);
+    console.log("Selected Year", selectedYear);
+    console.log("Filtered Year", filteredYear, " - State");
+    console.log("Filtered Expenses", filteredExpenses, " - State");
   };
+
+  const filteredExpenses = expenses.filter((expense) => {
+    return expense.date.getFullYear().toString() === filteredYear;
+  });
 
   return (
     <Card className="expenses">
@@ -23,7 +28,7 @@ const Expenses = ({ expenses }) => {
         selected={filteredYear}
         onChangeExpenseFilter={filterChangeHandler}
       />
-      {expenses.map((expense) => (
+      {filteredExpenses.map((expense) => (
         <ExpenseItem
           key={expense.id}
           date={expense.date}
