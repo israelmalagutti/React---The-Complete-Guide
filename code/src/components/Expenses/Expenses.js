@@ -11,11 +11,6 @@ const Expenses = ({ expenses }) => {
 
   const filterChangeHandler = (selectedYear) => {
     setFilteredYear(selectedYear);
-
-    // Debbug
-    console.log("Selected Year", selectedYear);
-    console.log("Filtered Year", filteredYear, " - State");
-    console.log("Filtered Expenses", filteredExpenses, " - State");
   };
 
   const filteredExpenses = expenses.filter((expense) => {
