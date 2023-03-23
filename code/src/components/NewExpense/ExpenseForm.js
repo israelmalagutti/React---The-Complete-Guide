@@ -35,7 +35,7 @@ const ExpenseForm = ({ onSaveExpenseData, onCancelEditing }) => {
     try {
       const expenseData = {
         title: formData.enteredTitle,
-        price: formData.enteredPrice,
+        price: +formData.enteredPrice,
         date: new Date(formData.enteredDate),
       };
 
