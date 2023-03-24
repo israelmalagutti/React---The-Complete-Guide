@@ -1,12 +1,53 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { Button, Card } from "../../Ui";
 
 import { StyledForm } from "./styles";
 
 export const AddUserForm = () => {
+  const [enteredUserData, setEnteredUserData] = useState({
+    userName: "",
+    userAge: "",
+  });
+
   const addUserHandler = (event) => {
     event.preventDefault();
+
+    if (
+      enteredUserData.userName.trim().length === 0 ||
+      enteredUserData.userAge.trim().length === 0
+    ) {
+      return;
+    }
+    if (+enteredUserData.userAge < 1) {
+      return;
+    }
+
+    const userData = {
+      username: enteredUserData.userName,
+      age: enteredUserData.userAge,
+    };
+
+    console.log(userData);
+
+    setEnteredUserData({
+      userAge: "",
+      userName: "",
+    });
+  };
+
+  const usernameChandleHandler = (event) => {
+    setEnteredUserData((prevState) => ({
+      ...prevState,
+      userName: event.target.value,
+    }));
+  };
+
+  const ageChandleHandler = (event) => {
+    setEnteredUserData((prevState) => ({
+      ...prevState,
+      userAge: event.target.value,
+    }));
   };
 
   return (
@@ -20,12 +61,22 @@ export const AddUserForm = () => {
     >
       <StyledForm onSubmit={addUserHandler}>
         <label htmlFor="username">Username</label>
-        <input id="username" type="text" />
+        <input
+          id="username"
+          value={enteredUserData.userName}
+          type="text"
+          onChange={usernameChandleHandler}
+        />
 
         <label htmlFor="age">Age (years)</label>
-        <input id="age" type="text" />
+        <input
+          id="age"
+          value={enteredUserData.userAge}
+          type="text"
+          onChange={ageChandleHandler}
+        />
 
-        <Button>Add User</Button>
+        <Button type="sumbit">Add User</Button>
       </StyledForm>
     </Card>
   );
