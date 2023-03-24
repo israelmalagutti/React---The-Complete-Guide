@@ -4,7 +4,7 @@ import { Button, Card } from "../../Ui";
 
 import { StyledForm } from "./styles";
 
-export const AddUserForm = () => {
+export const AddUserForm = ({ onAddUser }) => {
   const [enteredUserData, setEnteredUserData] = useState({
     userName: "",
     userAge: "",
@@ -24,11 +24,11 @@ export const AddUserForm = () => {
     }
 
     const userData = {
-      username: enteredUserData.userName,
+      name: enteredUserData.userName,
       age: enteredUserData.userAge,
     };
 
-    console.log(userData);
+    onAddUser(userData);
 
     setEnteredUserData({
       userAge: "",

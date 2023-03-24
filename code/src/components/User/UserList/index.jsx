@@ -13,13 +13,15 @@ export const UserList = ({ users }) => {
         "max-width": "40rem",
       }}
     >
-      <StyledList>
-        {users.map((user) => (
-          <li key={user.id}>
-            {user.name} ({user.age}yo)
-          </li>
-        ))}
-      </StyledList>
+      {users && (
+        <StyledList>
+          {users.map((user) => (
+            <li key={user.id}>
+              {user.name} ({user.age}yo)
+            </li>
+          ))}
+        </StyledList>
+      )}
     </Card>
   );
 };
