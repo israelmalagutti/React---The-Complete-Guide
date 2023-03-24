@@ -1,11 +1,12 @@
 import React from "react";
 
-import { AddUserForm } from "./components";
+import { AddUserForm, UserList } from "./components";
 
 function App() {
   return (
     <div>
       <AddUserForm />
+      <UserList items={[]} />
     </div>
   );
 }
