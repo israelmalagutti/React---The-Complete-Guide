@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Button, Card } from "../../Ui";
+import { Button, Card, ErrorModal } from "../../Ui";
 
 import { StyledForm } from "./styles";
 
@@ -9,6 +9,7 @@ export const AddUserForm = ({ onAddUser }) => {
     userName: "",
     userAge: "",
   });
+  const [error, setError] = useState();
 
   const addUserHandler = (event) => {
     event.preventDefault();
@@ -17,9 +18,17 @@ export const AddUserForm = ({ onAddUser }) => {
       enteredUserData.userName.trim().length === 0 ||
       enteredUserData.userAge.trim().length === 0
     ) {
+      setError({
+        title: "Invalid age",
+        message: "Please enter a valid age (> 0).",
+      });
       return;
     }
     if (+enteredUserData.userAge < 1) {
+      setError({
+        title: "Invalid age",
+        message: "Please enter a valid age (> 0).",
+      });
       return;
     }
 
@@ -50,34 +59,47 @@ export const AddUserForm = ({ onAddUser }) => {
     }));
   };
 
+  const errorHandler = () => {
+    setError(null);
+  };
+
   return (
-    <Card
-      styles={{
-        margin: "2rem auto",
-        padding: "1rem",
-        width: "90%",
-        "max-width": "40rem",
-      }}
-    >
-      <StyledForm onSubmit={addUserHandler}>
-        <label htmlFor="username">Username</label>
-        <input
-          id="username"
-          value={enteredUserData.userName}
-          type="text"
-          onChange={usernameChandleHandler}
+    <div>
+      {error && (
+        <ErrorModal
+          title={error.title}
+          message={error.message}
+          onConfirm={errorHandler}
         />
+      )}
+      <Card
+        styles={{
+          margin: "2rem auto",
+          padding: "1rem",
+          width: "90%",
+          "max-width": "40rem",
+        }}
+      >
+        <StyledForm onSubmit={addUserHandler}>
+          <label htmlFor="username">Username</label>
+          <input
+            id="username"
+            value={enteredUserData.userName}
+            type="text"
+            onChange={usernameChandleHandler}
+          />
 
-        <label htmlFor="age">Age (years)</label>
-        <input
-          id="age"
-          value={enteredUserData.userAge}
-          type="text"
-          onChange={ageChandleHandler}
-        />
+          <label htmlFor="age">Age (years)</label>
+          <input
+            id="age"
+            value={enteredUserData.userAge}
+            type="text"
+            onChange={ageChandleHandler}
+          />
 
-        <Button type="sumbit">Add User</Button>
-      </StyledForm>
-    </Card>
+          <Button type="sumbit">Add User</Button>
+        </StyledForm>
+      </Card>
+    </div>
   );
 };

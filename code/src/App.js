@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { AddUserForm, ErrorModal, UserList } from "./components";
+import { AddUserForm, UserList } from "./components";
 
 function App() {
   const [usersList, setUsersList] = useState([]);
@@ -14,7 +14,6 @@ function App() {
 
   return (
     <div>
-      <ErrorModal />
       <AddUserForm onAddUser={addUserHandler} />
       <UserList users={usersList} />
     </div>

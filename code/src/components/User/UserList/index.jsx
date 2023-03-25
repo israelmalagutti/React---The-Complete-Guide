@@ -1,18 +1,10 @@
 import React from "react";
 
-import { Card } from "../../Ui";
-
-import { StyledList } from "./styles";
+import { StyledCard, StyledList } from "./styles";
 
 export const UserList = ({ users }) => {
   return (
-    <Card
-      styles={{
-        margin: "2rem auto",
-        width: "90%",
-        "max-width": "40rem",
-      }}
-    >
+    <StyledCard>
       {users && (
         <StyledList>
           {users.map((user) => (
@@ -22,6 +14,6 @@ export const UserList = ({ users }) => {
           ))}
         </StyledList>
       )}
-    </Card>
+    </StyledCard>
   );
 };

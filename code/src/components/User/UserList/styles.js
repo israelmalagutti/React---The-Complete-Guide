@@ -1,4 +1,13 @@
 import styled from "styled-components";
+import { Card } from "../../Ui";
+
+export const StyledCard = styled(Card).attrs((props) => ({
+  styles: {
+    margin: "2rem auto",
+    width: "90%",
+    "max-width": "40rem",
+  },
+}))``;
 
 export const StyledList = styled.ul`
   list-style: none;
