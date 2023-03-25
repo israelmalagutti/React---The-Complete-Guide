@@ -9,10 +9,11 @@ const STANDARD_ERROR_MESSAGE = "An error has occoured, please try again later";
 export const ErrorModal = ({
   title = STANDARD_ERROR_TITLE,
   message = STANDARD_ERROR_MESSAGE,
+  onConfirm,
 }) => {
   return (
     <div>
-      <Backdrop />
+      <Backdrop onClick={onConfirm} />
       <StyledCard>
         <Header>
           <h2>{title}</h2>
@@ -23,7 +24,7 @@ export const ErrorModal = ({
         </Content>
 
         <Actions>
-          <Button>Okay</Button>
+          <Button onClick={onConfirm}>Okay</Button>
         </Actions>
       </StyledCard>
     </div>
