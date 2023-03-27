@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import { Button, Card, ErrorModal } from "../../Ui";
+import { Wrapper } from "../../Helpers";
 
 import { StyledForm } from "./styles";
 
@@ -64,7 +65,7 @@ export const AddUserForm = ({ onAddUser }) => {
   };
 
   return (
-    <>
+    <Wrapper>
       {error && (
         <ErrorModal
           title={error.title}
@@ -100,6 +101,6 @@ export const AddUserForm = ({ onAddUser }) => {
           <Button type="sumbit">Add User</Button>
         </StyledForm>
       </Card>
-    </>
+    </Wrapper>
   );
 };
