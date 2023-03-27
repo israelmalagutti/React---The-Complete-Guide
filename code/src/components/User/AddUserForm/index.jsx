@@ -64,7 +64,7 @@ export const AddUserForm = ({ onAddUser }) => {
   };
 
   return (
-    <div>
+    <>
       {error && (
         <ErrorModal
           title={error.title}
@@ -100,6 +100,6 @@ export const AddUserForm = ({ onAddUser }) => {
           <Button type="sumbit">Add User</Button>
         </StyledForm>
       </Card>
-    </div>
+    </>
   );
 };
