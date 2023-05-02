@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 import { Button, Card, ErrorModal } from "../../Ui";
 import { Wrapper } from "../../Helpers";
@@ -6,26 +6,26 @@ import { Wrapper } from "../../Helpers";
 import { StyledForm } from "./styles";
 
 export const AddUserForm = ({ onAddUser }) => {
-  const [enteredUserData, setEnteredUserData] = useState({
-    userName: "",
-    userAge: "",
-  });
+  const nameInputRef = useRef();
+  const ageInputRef = useRef();
+
   const [error, setError] = useState();
 
   const addUserHandler = (event) => {
     event.preventDefault();
 
-    if (
-      enteredUserData.userName.trim().length === 0 ||
-      enteredUserData.userAge.trim().length === 0
-    ) {
+    const enteredAge = ageInputRef.current.value;
+    const enteredName = nameInputRef.current.value;
+
+    if (enteredName.trim().length === 0 || enteredAge.trim().length === 0) {
       setError({
         title: "Invalid age",
         message: "Please enter a valid age (> 0).",
       });
       return;
     }
-    if (+enteredUserData.userAge < 1) {
+
+    if (+enteredAge < 1) {
       setError({
         title: "Invalid age",
         message: "Please enter a valid age (> 0).",
@@ -34,30 +34,14 @@ export const AddUserForm = ({ onAddUser }) => {
     }
 
     const userData = {
-      name: enteredUserData.userName,
-      age: enteredUserData.userAge,
+      name: enteredName,
+      age: enteredAge,
     };
 
     onAddUser(userData);
 
-    setEnteredUserData({
-      userAge: "",
-      userName: "",
-    });
-  };
-
-  const usernameChandleHandler = (event) => {
-    setEnteredUserData((prevState) => ({
-      ...prevState,
-      userName: event.target.value,
-    }));
-  };
-
-  const ageChandleHandler = (event) => {
-    setEnteredUserData((prevState) => ({
-      ...prevState,
-      userAge: event.target.value,
-    }));
+    nameInputRef.current.value = "";
+    ageInputRef.current.value = "";
   };
 
   const errorHandler = () => {
@@ -83,20 +67,10 @@ export const AddUserForm = ({ onAddUser }) => {
       >
         <StyledForm onSubmit={addUserHandler}>
           <label htmlFor="username">Username</label>
-          <input
-            id="username"
-            value={enteredUserData.userName}
-            type="text"
-            onChange={usernameChandleHandler}
-          />
+          <input id="username" type="text" ref={nameInputRef} />
 
           <label htmlFor="age">Age (years)</label>
-          <input
-            id="age"
-            value={enteredUserData.userAge}
-            type="text"
-            onChange={ageChandleHandler}
-          />
+          <input id="age" type="text" ref={ageInputRef} />
 
           <Button type="sumbit">Add User</Button>
         </StyledForm>
