@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 
 import Card from "../UI/Card/Card";
 import classes from "./Login.module.css";
@@ -73,6 +73,18 @@ const Login = (props) => {
     event.preventDefault();
     props.onLogin(email.value, password.value);
   };
+
+  useEffect(() => {
+    const identifier = setTimeout(() => {
+      console.log("Check form validity");
+      setFormIsValid(email.isValid && password.isValid);
+    }, 500);
+
+    return () => {
+      console.log("Cleared timeout");
+      clearTimeout(identifier);
+    };
+  }, [email, password]);
 
   return (
     <Card className={classes.login}>
